@@ -18,7 +18,7 @@ Tests live under `tests/`.
 
 ### Config files
 
-All `.conf` files are included from `config`. Sway uses i3-compatible config syntax. The mod key is Super. Navigation uses vim keys (h/j/k/l). Keyboard layout is Spanish with caps/escape swap.
+All `.conf` files live in `conf/` and are included from `config` in explicit order (variables must load first). Sway uses i3-compatible config syntax. The mod key is Super. Navigation uses vim keys (h/j/k/l). Keyboard layout is Spanish with caps/escape swap.
 
 ### Workspace management system
 
@@ -38,6 +38,15 @@ This config works alongside other dotfiles that live in separate directories:
 - `~/.config/kitty/` - terminal config
 
 Changes here may require coordinated changes in those directories, especially waybar.
+
+### PR monitor
+
+The `$mod+m` keybinding (in `keymaps.conf`) launches a tmux-based PR monitor, and `$mod+Shift+m` shows its legend. The scripts live in `~/.local/bin/`:
+
+- `pr-monitor-launch.sh` — opens or attaches to the monitor tmux session in kitty
+- `pr-monitor.sh` — creates a tmux session with three panes: authored PRs, assigned PRs, and all org PRs
+- `pr-monitor-legend.sh` — shows a quick-reference popup for the column meanings
+- `pr-list.sh` — the core script that fetches PR data via `gh` GraphQL and renders the status table (used by all panes)
 
 ## Conventions
 
@@ -60,10 +69,10 @@ Tests cover: focus/unfocus cycles, reorder, swap, rename, renumber chains, and t
 
 ## Common tasks
 
-- **Adding a keybinding**: edit `keymaps.conf` (or `workspaces.conf` for workspace bindings). Update `cheatsheet.sh` if the binding is user-facing.
-- **Adding an autostart service**: edit `autostart.conf`. Use `exec` for one-shot, `exec_always` for reload-safe.
-- **Adding a window rule**: edit `windowrules.conf`.
-- **Changing theme colors**: edit `lookAndFeel.conf`. The Catppuccin Mocha values are defined there.
+- **Adding a keybinding**: edit `conf/keymaps.conf` (or `conf/workspaces.conf` for workspace bindings). Update `scripts/launchers/cheatsheet.sh` if the binding is user-facing.
+- **Adding an autostart service**: edit `conf/autostart.conf`. Use `exec` for one-shot, `exec_always` for reload-safe.
+- **Adding a window rule**: edit `conf/windowrules.conf`.
+- **Changing theme colors**: edit `conf/lookAndFeel.conf`. The Catppuccin Mocha values are defined there.
 - **Adding a new workspace script**: add to `scripts/workspaces/` and coordinate with `ws-orignames-util.py` if it affects workspace numbering or naming.
 - **Adding a new UX script**: add to `scripts/ux/`.
 - **Adding a new launcher**: add to `scripts/launchers/`.
