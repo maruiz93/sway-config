@@ -30,6 +30,14 @@ My [Sway](https://swaywm.org/) tiling Wayland compositor configuration. Vim-cent
 - **autostart.conf** - services and daemons
 - **location.conf** - coordinates for wlsunset (gitignored)
 
+Scripts are organized under `scripts/`:
+
+- **scripts/workspaces/** - workspace management (create, rename, reorder, renumber, orignames utility, multi-monitor)
+- **scripts/ux/** - daemons and UX helpers (opacity, battery, notifications, font size)
+- **scripts/launchers/** - app launchers (Claude Code, GoLand, cheatsheet)
+
+Tests live under `tests/`.
+
 ## Workspace management
 
 Supports up to 20 workspaces (Super+1-0 and Super+Alt+1-0). Scripts for dynamic workspace operations:
@@ -39,7 +47,7 @@ Supports up to 20 workspaces (Super+1-0 and Super+Alt+1-0). Scripts for dynamic 
 - **reorder-workspace.sh** - move workspace left/right, swapping with neighbors
 - **renumber-workspaces.sh** - close numbering gaps by renumbering sequentially
 
-These scripts coordinate with an "orignames" system (`ws-orignames-util.py`) that preserves workspace display names through renumber/reorder operations. The orignames state lives in `/tmp/ws-orignames.json` and is consumed by waybar's workspace truncation script.
+All in `scripts/workspaces/`. These scripts coordinate with an "orignames" system (`ws-orignames-util.py`) that preserves workspace display names through renumber/reorder operations. The orignames state lives in `/tmp/ws-orignames.json` and is consumed by waybar's workspace truncation script.
 
 ## Waybar customizations
 

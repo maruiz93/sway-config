@@ -2,7 +2,7 @@
 # Reorder the focused workspace one position left or right within its output.
 # Finds a free number in the gap if available, otherwise swaps with the neighbor.
 DIRECTION="${1:?Usage: reorder-workspace.sh left|right}"
-ORIGNAMES_UTIL="$HOME/.config/sway/ws-orignames-util.py"
+ORIGNAMES_UTIL="$HOME/.config/sway/scripts/workspaces/ws-orignames-util.py"
 
 ALL_WS=$(swaymsg -t get_workspaces)
 FOCUSED_NUM=$(echo "$ALL_WS" | jq '[.[] | select(.focused)][0].num')

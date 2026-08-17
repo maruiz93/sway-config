@@ -1,7 +1,7 @@
 #!/bin/bash
 # Renumber all workspaces sequentially (1, 2, 3, ...) to close gaps.
 
-ORIGNAMES_UTIL="$HOME/.config/sway/ws-orignames-util.py"
+ORIGNAMES_UTIL="$HOME/.config/sway/scripts/workspaces/ws-orignames-util.py"
 
 ALL_WS=$(swaymsg -t get_workspaces)
 SORTED=$(echo "$ALL_WS" | jq -c '[.[] | select(.num > 0) | {num, name}] | sort_by(.num)')

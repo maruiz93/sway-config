@@ -1,5 +1,5 @@
 #!/bin/bash
-ORIGNAMES_UTIL="$HOME/.config/sway/ws-orignames-util.py"
+ORIGNAMES_UTIL="$HOME/.config/sway/scripts/workspaces/ws-orignames-util.py"
 
 CURRENT=$(swaymsg -t get_workspaces | jq -r '.[] | select(.focused)')
 NUM=$(echo "$CURRENT" | jq -r '.num')

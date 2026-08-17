@@ -6,7 +6,13 @@ Instructions for AI agents working on this sway configuration.
 
 This is a Sway (Wayland tiling compositor) desktop environment configuration. It is a personal dotfiles repo — the user runs this config daily on Fedora Linux.
 
-The config is modular: `config` is the entry point and includes `.conf` files for devices, keymaps, workspaces, appearance, window rules, and autostart services. Helper scripts (bash and Python) handle workspace management, UX features, and app launchers.
+The config is modular: `config` is the entry point and includes `.conf` files for devices, keymaps, workspaces, appearance, window rules, and autostart services. Helper scripts (bash and Python) are organized under `scripts/`:
+
+- `scripts/workspaces/` - workspace management (create, rename, reorder, renumber, orignames, multi-monitor)
+- `scripts/ux/` - daemons and UX helpers (opacity, battery, notifications, font size)
+- `scripts/launchers/` - app launchers (Claude Code, GoLand, cheatsheet)
+
+Tests live under `tests/`.
 
 ## Architecture
 
@@ -16,7 +22,7 @@ All `.conf` files are included from `config`. Sway uses i3-compatible config syn
 
 ### Workspace management system
 
-The workspace scripts (`new-workspace.sh`, `rename-workspace.sh`, `reorder-workspace.sh`, `renumber-workspaces.sh`) form a coordinated system. They share an "orignames" mechanism via `ws-orignames-util.py` that preserves user-assigned workspace names through reorder and renumber operations.
+The workspace scripts in `scripts/workspaces/` (`new-workspace.sh`, `rename-workspace.sh`, `reorder-workspace.sh`, `renumber-workspaces.sh`) form a coordinated system. They share an "orignames" mechanism via `ws-orignames-util.py` that preserves user-assigned workspace names through reorder and renumber operations.
 
 State is stored in `/tmp/ws-orignames.json`. The orignames utility is also consumed by waybar's `ws-truncation.py` (in `~/.config/waybar/`) to restore display names after truncation.
 
@@ -47,7 +53,7 @@ Changes here may require coordinated changes in those directories, especially wa
 `test-ws-orignames.py` contains unit and integration tests for the orignames utility. Run with:
 
 ```
-pytest test-ws-orignames.py -v
+pytest tests/test-ws-orignames.py -v
 ```
 
 Tests cover: focus/unfocus cycles, reorder, swap, rename, renumber chains, and truncation edge cases.
@@ -58,4 +64,6 @@ Tests cover: focus/unfocus cycles, reorder, swap, rename, renumber chains, and t
 - **Adding an autostart service**: edit `autostart.conf`. Use `exec` for one-shot, `exec_always` for reload-safe.
 - **Adding a window rule**: edit `windowrules.conf`.
 - **Changing theme colors**: edit `lookAndFeel.conf`. The Catppuccin Mocha values are defined there.
-- **Adding a new workspace script**: coordinate with `ws-orignames-util.py` if it affects workspace numbering or naming.
+- **Adding a new workspace script**: add to `scripts/workspaces/` and coordinate with `ws-orignames-util.py` if it affects workspace numbering or naming.
+- **Adding a new UX script**: add to `scripts/ux/`.
+- **Adding a new launcher**: add to `scripts/launchers/`.

@@ -14,9 +14,10 @@ import sys
 import tempfile
 import unittest
 
-UTIL = os.path.join(os.path.dirname(__file__), 'ws-orignames-util.py')
+UTIL = os.path.join(os.path.dirname(__file__), '..', 'scripts', 'workspaces',
+                    'ws-orignames-util.py')
 TRUNCATION = os.path.join(os.path.dirname(os.path.dirname(__file__)),
-                          'waybar', 'ws-truncation.py')
+                          '..', 'waybar', 'ws-truncation.py')
 
 
 class OrigNamesUtilTest(unittest.TestCase):
