@@ -1,8 +1,8 @@
-include ~/.config/sway/variables.conf
-include ~/.config/sway/devices.conf
-include ~/.config/sway/lookAndFeel.conf
-include ~/.config/sway/keymaps.conf
-include ~/.config/sway/windowrules.conf
-include ~/.config/sway/workspaces.conf
-include ~/.config/sway/autostart.conf
+include ~/.config/sway/conf/variables.conf
+include ~/.config/sway/conf/devices.conf
+include ~/.config/sway/conf/lookAndFeel.conf
+include ~/.config/sway/conf/keymaps.conf
+include ~/.config/sway/conf/windowrules.conf
+include ~/.config/sway/conf/workspaces.conf
+include ~/.config/sway/conf/autostart.conf
 include /etc/sway/config.d/*

@@ -19,16 +19,16 @@ My [Sway](https://swaywm.org/) tiling Wayland compositor configuration. Vim-cent
 
 ## Layout
 
-`config` is the entry point and includes modular `.conf` files:
+`config` is the entry point and includes modular files from `conf/`:
 
-- **variables.conf** - mod key, vim keys, app variables, screenshot commands
-- **devices.conf** - touchpad, keyboard (Spanish layout, caps/escape swap), wallpaper, output delegation to kanshi
-- **keymaps.conf** - all keybindings: navigation, layout, media, screenshots, workspace ops, gestures, clipboard history, app launchers
-- **workspaces.conf** - workspace switch/move bindings for 1-20 (number row + alt layer)
-- **lookAndFeel.conf** - Catppuccin Mocha colors, borders, gaps, font
-- **windowrules.conf** - Chrome focus-stealing prevention, PWA borders, popup rules
-- **autostart.conf** - services and daemons
-- **location.conf** - coordinates for wlsunset (gitignored)
+- **conf/variables.conf** - mod key, vim keys, app variables, screenshot commands
+- **conf/devices.conf** - touchpad, keyboard (Spanish layout, caps/escape swap), wallpaper, output delegation to kanshi
+- **conf/keymaps.conf** - all keybindings: navigation, layout, media, screenshots, workspace ops, gestures, clipboard history, app launchers
+- **conf/workspaces.conf** - workspace switch/move bindings for 1-20 (number row + alt layer)
+- **conf/lookAndFeel.conf** - Catppuccin Mocha colors, borders, gaps, font
+- **conf/windowrules.conf** - Chrome focus-stealing prevention, PWA borders, popup rules
+- **conf/autostart.conf** - services and daemons
+- **location.conf** - coordinates for wlsunset (gitignored, stays at root)
 
 Scripts are organized under `scripts/`:
 
